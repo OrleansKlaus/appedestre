@@ -1,0 +1,21 @@
+body {
+    background-color:#F7F7F7;
+  }
+  
+  #blocoLogin {
+      width:450px;
+      margin:35px auto 0 auto;
+  }
+  
+  #falhaLogin {
+      text-align:center;
+      font-weight:bolder;
+      display:none;
+  }
+  
+  #sucessoLogin {
+      text-align:center;
+      font-weight:bolder;
+      display:none;
+  }
+  
