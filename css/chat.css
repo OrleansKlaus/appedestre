@@ -23,7 +23,7 @@
 }
 
 .report-buttons button {
-  background: #f5886e;
+  background: #18BC9C;
   color: #fff;
   font-weight: bold;
   font-size: 18px;
@@ -72,7 +72,7 @@
   position: relative;
 }
 .top_menu .buttons .button.close {
-  background-color: #f5886e;
+  background-color: #ED8246;
 }
 .top_menu .buttons .button.minimize {
   background-color: #fdbf68;
@@ -102,11 +102,11 @@
   opacity: 0;
 }
 .messages .message.left .avatar {
-  background-color: #f5886e;
+  background-color: #6CA2FF;
   float: left;
 }
 .messages .message.left .text_wrapper {
-  background-color: #ffe6cb;
+  background-color: #77EDCD;
   margin-left: 20px;
 }
 .messages .message.left .text_wrapper::after, .messages .message.left .text_wrapper::before {
@@ -114,10 +114,10 @@
   border-right-color: #ffe6cb;
 }
 .messages .message.left .text {
-  color: #c48843;
+  color: #ffffff;
 }
 .messages .message.right .avatar {
-  background-color: #fdbf68;
+  background-color: #ffffff;
   float: right;
 }
 .messages .message.right .text_wrapper {
@@ -198,7 +198,7 @@
   color: gray;
 }
 .bottom_wrapper .send_message {
-  width: 140px;
+  width: 350px;
   height: 50px;
   display: inline-block;
   border-radius: 50px;
