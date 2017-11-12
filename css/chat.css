@@ -179,6 +179,16 @@
   position: absolute;
   bottom: 0;
 }
+
+.bottom_wrapper.clearfix {
+  display: flex;
+  align-items: center;
+}
+.clearfix > button {
+  flex-grow: 1;
+  margin: 10px;
+}
+
 .bottom_wrapper .message_input_wrapper {
   display: inline-block;
   height: 50px;
@@ -295,6 +305,17 @@
   background-size: cover;
 
 }
+.img-preocupacao-carro{
+  background-image: url(../img/portfolio/preocupacao-carro.png);
+
+}
+.img-carro-queimado{
+  background-image: url(../img/portfolio/CarroQueimado.png);
+}
+
+
+
+
 
 @media screen and ( min-width: 768px ) {
   /* half-width cells for larger devices */
