@@ -31,7 +31,6 @@
                 message_side: message_side
             });
 
-
             message.draw();
 
             return $messages.animate({
@@ -56,7 +55,7 @@
             $('.messages .issues').addClass('active');
         }
 
-        sendMessage('Olá, sou seu assistente Virtual da prefeitura de São Paulo, o que pretende relatar?', showButtons);
+        sendMessage('Olá, sou seu assistente virtual, o que pretende relatar?', showButtons);
 
         $('.report-buttons button.calcada').click(function () {
 
@@ -98,16 +97,13 @@
                 });
             });
         });
-
         $('.issues .carousel-cell').click(function () {
             console.log($(this).text())
             sendMessage($(this).text(), function () {
                 hideOptions();
 
             });
-
         });
-
         $('.send_message').click(function () {
             console.log($(this).text())
             $(".chat_window").hide();
