@@ -45,5 +45,6 @@ function trocar(aux){
     }
     console.log(corpo)
     lo.flickity("insert", $(corpo))
+    lo.flickity('resize')
     //$('#carousel_foto').html(corpo).flickity();
 }
