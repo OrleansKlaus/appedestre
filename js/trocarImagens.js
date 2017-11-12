@@ -36,10 +36,10 @@ function trocar(aux){
     }
     if (aux == 'na_via'){
         console.log(aux)
-        corpo = '<div class="carousel-cell carousel-cell-img-FaixadePedestre">'
+        corpo = '<div class="carousel-cell img-faixa-pedestre">'
         corpo +='<span class="colorstrip">Inclusão de faixa de pedestre</span>'
         corpo += '</div>'
-        corpo += '<div class="carousel-cell carousel-cell-img-PlacaDanificada">'
+        corpo += '<div class="carousel-cell img-placa-danificada">'
         corpo += '  <span class="colorstrip">Placa danificada</span>'
         corpo += '</div>'
     }
