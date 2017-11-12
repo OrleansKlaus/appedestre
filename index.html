@@ -1,4 +1,4 @@
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -13,39 +13,48 @@
 
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
-    
-        <!-- Bootstrap Core JavaScript -->
-        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    
-        <!-- Plugin JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    
-        <!-- Contact Form JavaScript -->
-        <script src="js/jqBootstrapValidation.js"></script>
-        <script src="js/contact_me.js"></script>
-    
-        <!-- Theme JavaScript -->
-        <script src="js/freelancer.min.js"></script>
-        <script src="js/flickity.pkgd.min.js"></script>
-        <script>
-          function initMap() {
-            var uluru = {lat: -23.6000864, lng: -46.676783199999996};
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/freelancer.min.js"></script>
+    <script src="js/flickity.pkgd.min.js"></script>
+    <script>
+        function initMap() {
+            var uluru = { lat: -23.579975, lng: -46.649063 };
             var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 15,
-              center: uluru
+                zoom: 15,
+                center: uluru
             });
             var marker = new google.maps.Marker({
-              position: uluru,
-              map: map,
+                position: uluru,
+                map: map,
             });
-          }
-        </script>
-        <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_Gy6bNa5QeuB6IMfgqt-tewWYN4Dsi1w">
-        </script>
-    
-        <script src="js/trocarImagens.js"></script>
-        <script src="js/chat.js"></script>
+            $.ajax("http://9.232.20.12:5000/v1/ocorrencia", { method: "GET" }).done(function (k) {
+                pontos = k.data
+                pontos.map(function (x) { return [x.lat, x.long] })
+                    .forEach(function (x) {
+                        new google.maps.Marker({
+                            position: { lat: x[0], lng: x[1] },
+                            map: map
+                        })
+                    });
+            })
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_Gy6bNa5QeuB6IMfgqt-tewWYN4Dsi1w">
+    </script>
+
+    <script src="js/trocarImagens.js"></script>
+    <script src="js/chat.js"></script>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -71,7 +80,9 @@
 </head>
 
 <body id="page-top" class="index">
-<div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
+    <div id="skipnav">
+        <a href="#maincontent">Skip to main content</a>
+    </div>
 
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
@@ -79,7 +90,8 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle navigation</span> Menu
+                    <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="#page-top">APPEDESTRE</a>
             </div>
@@ -100,7 +112,7 @@
                         <a href="#contact">Contato</a>
                     </li>
                     <li class="page-scroll">
-                            <a href="login.html">Login </a>
+                        <a href="login.html">Login </a>
                     </li>
                 </ul>
 
@@ -164,7 +176,7 @@
                                 <div class="carousel-cell carousel-cell-img-desnivel">
                                     <span class="colorstrip">Desnível na Calçada</span>
                                 </div>
-                                <div class="carousel-cell carousel-cell-img-entulho"> 
+                                <div class="carousel-cell carousel-cell-img-entulho">
                                     <span class="colorstrip">Calçada com entulho</span>
                                 </div>
                                 <div class="carousel-cell carousel-cell-img-acessib">
@@ -186,10 +198,10 @@
                             <div class="text">REPORTAR</div>
                         </button>
                         <button class="return_message" onClick="window.location.reload()">
-                                <div class="icon"></div>
-                                <div class="text">VOLTAR</div>
-                            </button>
-                        
+                            <div class="icon"></div>
+                            <div class="text">VOLTAR</div>
+                        </button>
+
                     </div>
                 </div>
                 <div class="message_template">
@@ -216,10 +228,15 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2">
-                    <p>APPedestre é uma plataforma online que permite ao cidadão relatar problemas de infra-estrutura na cidade de São Paulo. A partir dele é possível reportar problemas nas calçadas e viários, tais quais buracos, má iluminação, lixo, inclinação indevida, entre outros, assim como acidentes.</p>
+                    <p>APPedestre é uma plataforma online que permite ao cidadão relatar problemas de infra-estrutura na cidade
+                        de São Paulo. A partir dele é possível reportar problemas nas calçadas e viários, tais quais buracos,
+                        má iluminação, lixo, inclinação indevida, entre outros, assim como acidentes.</p>
                 </div>
                 <div class="col-lg-4">
-                    <p>Nosso ranking é automaticamente alimentado ao sistema da informação da prefeitura para que os problemas relatados possam ser resolvidos definitivamente. Quanto mais likes a ocorrência receber, de pedestres, usuários da via, entre outros, pode-se confirmar que se trata de um problema real e possibilitamos que eles possam ser resolvidos de acordo com seu impacto na vida das pessoas. </p>
+                    <p>Nosso ranking é automaticamente alimentado ao sistema da informação da prefeitura para que os problemas
+                        relatados possam ser resolvidos definitivamente. Quanto mais likes a ocorrência receber, de pedestres,
+                        usuários da via, entre outros, pode-se confirmar que se trata de um problema real e possibilitamos
+                        que eles possam ser resolvidos de acordo com seu impacto na vida das pessoas. </p>
                 </div>
             </div>
         </div>
@@ -294,25 +311,42 @@
                         <h3>Encontre-nos na Web</h3>
                         <ul class="list-inline">
                             <li>
-                                <a href="#" class="btn-social btn-outline"><span class="sr-only">Facebook</span><i class="fa fa-fw fa-facebook"></i></a>
+                                <a href="#" class="btn-social btn-outline">
+                                    <span class="sr-only">Facebook</span>
+                                    <i class="fa fa-fw fa-facebook"></i>
+                                </a>
                             </li>
                             <li>
-                                <a href="#" class="btn-social btn-outline"><span class="sr-only">Google Plus</span><i class="fa fa-fw fa-google-plus"></i></a>
+                                <a href="#" class="btn-social btn-outline">
+                                    <span class="sr-only">Google Plus</span>
+                                    <i class="fa fa-fw fa-google-plus"></i>
+                                </a>
                             </li>
                             <li>
-                                <a href="#" class="btn-social btn-outline"><span class="sr-only">Twitter</span><i class="fa fa-fw fa-twitter"></i></a>
+                                <a href="#" class="btn-social btn-outline">
+                                    <span class="sr-only">Twitter</span>
+                                    <i class="fa fa-fw fa-twitter"></i>
+                                </a>
                             </li>
                             <li>
-                                <a href="#" class="btn-social btn-outline"><span class="sr-only">Linked In</span><i class="fa fa-fw fa-linkedin"></i></a>
+                                <a href="#" class="btn-social btn-outline">
+                                    <span class="sr-only">Linked In</span>
+                                    <i class="fa fa-fw fa-linkedin"></i>
+                                </a>
                             </li>
                             <li>
-                                <a href="#" class="btn-social btn-outline"><span class="sr-only">Dribble</span><i class="fa fa-fw fa-dribbble"></i></a>
+                                <a href="#" class="btn-social btn-outline">
+                                    <span class="sr-only">Dribble</span>
+                                    <i class="fa fa-fw fa-dribbble"></i>
+                                </a>
                             </li>
                         </ul>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Sobre APPedestre</h3>
-                        <p>APPedestre é livre para qualquer cidadão da cidade de São Paulo, criado com ajuda da comunidade e prefeitura da cidade de São Paulo <a href="index.html">Start Bootstrap</a>.</p>
+                        <p>APPedestre é livre para qualquer cidadão da cidade de São Paulo, criado com ajuda da comunidade e
+                            prefeitura da cidade de São Paulo
+                            <a href="index.html">Start Bootstrap</a>.</p>
                     </div>
                 </div>
             </div>
@@ -351,22 +385,29 @@
                             <h2>Project Title</h2>
                             <hr class="star-primary">
                             <img src="img/portfolio/cabin.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set
+                                by
+                                <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can
+                                purchase the entire set with 146 icons for only $12!</p>
                             <ul class="list-inline item-details">
                                 <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Start Bootstrap</a>
                                     </strong>
                                 </li>
                                 <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    <strong>
+                                        <a href="http://startbootstrap.com">April 2014</a>
                                     </strong>
                                 </li>
                                 <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Web Development</a>
                                     </strong>
                                 </li>
                             </ul>
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                <i class="fa fa-times"></i> Close</button>
                         </div>
                     </div>
                 </div>
@@ -388,22 +429,29 @@
                             <h2>Project Title</h2>
                             <hr class="star-primary">
                             <img src="img/portfolio/cake.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set
+                                by
+                                <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can
+                                purchase the entire set with 146 icons for only $12!</p>
                             <ul class="list-inline item-details">
                                 <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Start Bootstrap</a>
                                     </strong>
                                 </li>
                                 <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    <strong>
+                                        <a href="http://startbootstrap.com">April 2014</a>
                                     </strong>
                                 </li>
                                 <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Web Development</a>
                                     </strong>
                                 </li>
                             </ul>
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                <i class="fa fa-times"></i> Close</button>
                         </div>
                     </div>
                 </div>
@@ -425,22 +473,29 @@
                             <h2>Project Title</h2>
                             <hr class="star-primary">
                             <img src="img/portfolio/circus.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set
+                                by
+                                <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can
+                                purchase the entire set with 146 icons for only $12!</p>
                             <ul class="list-inline item-details">
                                 <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Start Bootstrap</a>
                                     </strong>
                                 </li>
                                 <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    <strong>
+                                        <a href="http://startbootstrap.com">April 2014</a>
                                     </strong>
                                 </li>
                                 <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Web Development</a>
                                     </strong>
                                 </li>
                             </ul>
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                <i class="fa fa-times"></i> Close</button>
                         </div>
                     </div>
                 </div>
@@ -462,22 +517,29 @@
                             <h2>Project Title</h2>
                             <hr class="star-primary">
                             <img src="img/portfolio/game.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set
+                                by
+                                <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can
+                                purchase the entire set with 146 icons for only $12!</p>
                             <ul class="list-inline item-details">
                                 <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Start Bootstrap</a>
                                     </strong>
                                 </li>
                                 <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    <strong>
+                                        <a href="http://startbootstrap.com">April 2014</a>
                                     </strong>
                                 </li>
                                 <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Web Development</a>
                                     </strong>
                                 </li>
                             </ul>
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                <i class="fa fa-times"></i> Close</button>
                         </div>
                     </div>
                 </div>
@@ -499,22 +561,29 @@
                             <h2>Project Title</h2>
                             <hr class="star-primary">
                             <img src="img/portfolio/safe.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set
+                                by
+                                <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can
+                                purchase the entire set with 146 icons for only $12!</p>
                             <ul class="list-inline item-details">
                                 <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Start Bootstrap</a>
                                     </strong>
                                 </li>
                                 <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    <strong>
+                                        <a href="http://startbootstrap.com">April 2014</a>
                                     </strong>
                                 </li>
                                 <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Web Development</a>
                                     </strong>
                                 </li>
                             </ul>
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                <i class="fa fa-times"></i> Close</button>
                         </div>
                     </div>
                 </div>
@@ -536,22 +605,29 @@
                             <h2>Project Title</h2>
                             <hr class="star-primary">
                             <img src="img/portfolio/submarine.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set
+                                by
+                                <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can
+                                purchase the entire set with 146 icons for only $12!</p>
                             <ul class="list-inline item-details">
                                 <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Start Bootstrap</a>
                                     </strong>
                                 </li>
                                 <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    <strong>
+                                        <a href="http://startbootstrap.com">April 2014</a>
                                     </strong>
                                 </li>
                                 <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Web Development</a>
                                     </strong>
                                 </li>
                             </ul>
-                            <button id="btnSubmit" type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                            <button id="btnSubmit" type="button" class="btn btn-default" data-dismiss="modal">
+                                <i class="fa fa-times"></i> Close</button>
                         </div>
                     </div>
                 </div>
@@ -559,7 +635,7 @@
         </div>
     </div>
 
-    
+
 </body>
 
 </html>
