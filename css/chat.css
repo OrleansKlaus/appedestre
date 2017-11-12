@@ -111,13 +111,13 @@
 }
 .messages .message.left .text_wrapper::after, .messages .message.left .text_wrapper::before {
   right: 100%;
-  border-right-color: #ffe6cb;
+  border-right-color: #77EDCD;
 }
 .messages .message.left .text {
   color: #ffffff;
 }
 .messages .message.right .avatar {
-  background-color: #ffffff;
+  background-color: #a5bdfc;
   float: right;
 }
 .messages .message.right .text_wrapper {

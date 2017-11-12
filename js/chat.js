@@ -16,7 +16,7 @@
         return this;
     };
     $(function () {
-        var  message_side, sendMessage;
+        var message_side, sendMessage;
         message_side = 'right';
         sendMessage = function (text, callback) {
             var $messages, message;
@@ -34,8 +34,8 @@
 
             message.draw();
 
-            return $messages.animate({ 
-                scrollTop: $messages.prop('scrollHeight') 
+            return $messages.animate({
+                scrollTop: $messages.prop('scrollHeight')
             }, 300, callback);
         };
         $('.message_input').keyup(function (e) {
@@ -58,30 +58,48 @@
 
         sendMessage('Olá, sou seu assistente Virtual da prefeitura de São Paulo, o que pretende relatar?', showButtons);
 
-        $('.report-buttons button.calcada').click(function() {
-            
+        $('.report-buttons button.calcada').click(function () {
+
             sendMessage($(this).text(), function () {
                 trocar('calcada');
                 hideOptions();
                 showCarousel();
+                $('.flickity-slider .carousel-cell').click(function () {
+                    console.log($(this).text())
+                    sendMessage($(this).text(), function () {
+                        hideOptions();
+                    });
+                });
             });
         });
-        $('.report-buttons button.acidente').click(function() {
+        $('.report-buttons button.acidente').click(function () {
             sendMessage($(this).text(), function () {
                 trocar('acidente');
                 hideOptions();
                 showCarousel();
+                $('.flickity-slider .carousel-cell').click(function () {
+                    console.log($(this).text())
+                    sendMessage($(this).text(), function () {
+                        hideOptions();
+                    });
+                });
             });
         });
-        $('.report-buttons button.na_via').click(function() {
+        $('.report-buttons button.na_via').click(function () {
             sendMessage($(this).text(), function () {
                 trocar('na_via');
                 hideOptions();
                 showCarousel();
+                $('.flickity-slider .carousel-cell').click(function () {
+                    console.log($(this).text())
+                    sendMessage($(this).text(), function () {
+                        hideOptions();
+                    });
+                });
             });
         });
 
-        $('.issues .carousel-cell').click(function() {
+        $('.issues .carousel-cell').click(function () {
             console.log($(this).text())
             sendMessage($(this).text(), function () {
                 hideOptions();
@@ -90,23 +108,11 @@
 
         });
 
-        $('.send_message').click(function() {
+        $('.send_message').click(function () {
             console.log($(this).text())
             $(".chat_window").hide();
             $("#map").show();
             initMap();
         });
-
-
-
-
-
-        
-        /*setTimeout(function () {
-            return sendMessage('Hi Sandy! How are you?');
-        }, 1000);
-        return setTimeout(function () {
-            return sendMessage('I\'m fine, thank you!');
-        }, 2000);*/
     });
 }.call(this));
